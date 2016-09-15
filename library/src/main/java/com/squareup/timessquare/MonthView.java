@@ -57,7 +57,12 @@ public class MonthView extends LinearLayout {
     for (int offset = 0; offset < 7; offset++) {
       today.set(Calendar.DAY_OF_WEEK, getDayOfWeek(firstDayOfWeek, offset, view.isRtl));
       final TextView textView = (TextView) headerRow.getChildAt(offset);
-      textView.setText(weekdayNameFormat.format(today.getTime()));
+      String week = weekdayNameFormat.format(today.getTime());
+      if(week!=null)
+      {
+        week = week.replace("周","");
+      }
+      textView.setText(week);
     }
     today.set(Calendar.DAY_OF_WEEK, originalDayOfWeek);
     view.listener = listener;

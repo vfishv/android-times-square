@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <string name="day_name_format">E</string>
+  <string name="invalid_date">日期必须在 %1$s ～ %2$s 之间.</string>
+  <string name="month_name_format">yyyy MMMM</string>
+</resources>
