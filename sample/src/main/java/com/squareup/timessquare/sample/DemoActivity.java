@@ -47,6 +47,24 @@ public class DemoActivity extends Activity {
                 .SelectionMode.SINGLE)
                 .withSelectedDate(selectedDates);
 
+        calendar.setOnInvalidDateSelectedListener(new CalendarPickerView.OnInvalidDateSelectedListener() {
+            @Override
+            public void onInvalidDateSelected(Date date) {
+                Log.e(TAG, "onInvalidDateSelected: " + printDate(date));
+            }
+        });
+
+        calendar.setOnDateSelectedListener(new CalendarPickerView.OnDateSelectedListener() {
+            @Override
+            public void onDateSelected(Date date) {
+                Log.e(TAG, "onDateSelected: " + printDate(date));
+            }
+
+            @Override
+            public void onDateUnselected(Date date) {
+                Log.e(TAG, "onDateUnselected: " + printDate(date));
+            }
+        });
 
         MonthView monthView = (MonthView) findViewById(R.id.month_view);
 
@@ -70,9 +88,11 @@ public class DemoActivity extends Activity {
 
     }
 
-    private void printDate(Date date)
+    private String printDate(Date date)
     {
         DateFormat df = new SimpleDateFormat("yyyy-MM-dd");
-        Log.e(TAG, "date: "  + df.format(date));
+        String ret = df.format(date);
+        Log.e(TAG, "date: "  + ret);
+        return ret;
     }
 }
